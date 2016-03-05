@@ -1,0 +1,41 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mydemo</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style> 
+        .booth{
+	width: 400px;
+	background: #ccc;
+	border: 10px solid #ddd;
+	margin:0 auto;
+}
+        </style>
+    </head>
+    <body>
+        <div class="booth">
+<video id="video" width="400" height="300" autoplay="autoplay"></video>
+</div>
+<script type="text/javascript">
+    (function(){
+	var video=document.getElementById('video'),
+	vendorUrl=window.URL || window.webkitURL;
+	
+	navigator.getMedia= navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+	navigator.getMedia({
+	video:true,
+	audio:true
+	},function(stream){
+		video.src= vendorUrl.createObjectURL(stream);
+		video.play();
+	},function(error){
+		
+	});
+})();
+</script>
+    </body>
+</html>
